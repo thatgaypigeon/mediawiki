@@ -1,0 +1,647 @@
+/*                                      //
+_____,――――――――――――――――――――――――――――――,_____
+╲    |   SPECIAL:MYPAGE/GLOBAL.CSS  |    ╱
+╱____|――――――――――――――――――――――――――――――|____╲
+                                          
+//            Meta Wikimedia            */
+
+/* → Imports
+// --------------------- */
+/* → Import per-skin styles */
+@import url('https://meta.wikimedia.org/w/index.php?action=raw&ctype=text/css&title=Special:MyPage/vector.css');
+@import url('https://meta.wikimedia.org/w/index.php?action=raw&ctype=text/css&title=Special:MyPage/minerva.css');
+
+/* → Import extra styles (styles with parse errors) */
+@import url('https://meta.wikimedia.org/w/index.php?action=raw&ctype=text/css&title=Special:MyPage/extra.css');
+
+/* → Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+    font-family: "Lulo";
+    font-weight: 300;
+    src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot");
+    src: url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/76b608d5f663dca06931a6e0da441c6d.svg#Lulo Clean One") format("svg");
+}
+@font-face {
+    font-family: "Lulo";
+    font-weight: 700;
+    src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot");
+    src: url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.eot?#iefix") format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff2") format("woff2"),
+    url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.woff") format("woff"),
+    url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.ttf") format("truetype"),
+    url("https://db.onlinewebfonts.com/t/164a60c2e090248befbcf32fdd5af386.svg#Lulo Clean One Bold") format("svg");
+}
+
+
+/* → Root variables
+// --------------------- */
+:root {
+	/* → Multipliers */
+	--hover-multiplier: 1.12;
+	
+	/* → Spacers */
+	--space-0: 0.125rem;
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-5: 1.25rem;
+	--space-6: 1.5rem;
+	--space-7: 1.75rem;
+	--space-8: 2rem;
+	
+	/* → Border radiuses */
+	--border-radius-0: 1px;
+	--border-radius-1: 2px;
+	--border-radius-2: 3px;
+	--border-radius-3: 4px;
+	--border-radius-4: 6px;
+	--border-radius-5: 8px;
+	--border-radius-6: 10px;
+	--border-radius-7: 12px;
+	--border-radius-8: 15px;
+	
+	/* → Background colours */
+    --colour-surface-0: hsl(var(--colour-primary__h), 20%, 10%);
+    --colour-surface-1: hsl(var(--colour-primary__h), 25%, 12%);
+    --colour-surface-2: hsl(var(--colour-primary__h), 25%, 15%);
+    --colour-surface-3: hsl(var(--colour-primary__h), 15%, 20%);
+    --colour-surface-4: hsl(var(--colour-primary__h), 15%, 25%);
+    --colour-surface-5: hsl(var(--colour-primary__h), 20%, 30%);
+    --colour-surface-6: hsl(var(--colour-primary__h), 25%, 35%);
+    
+	/* → Border colours */
+	--border-colour-base--lighter: rgb(255 255 255 / 0.02);
+	--border-colour-base: rgb(255 255 255 / 0.05);
+	--border-colour-base--darker: rgb(255 255 255 / 0.08);
+	
+	/* → Base colours */
+	--colour-primary__h: 220;
+	--colour-primary__s: 60%;
+	--colour-primary__l: 55%;
+	--colour-primary: hsl(var(--colour-primary__h), var(--colour-primary__s), var(--colour-primary__l));
+	--colour-primary--hover: hsl(var(--colour-primary__h), var(--colour-primary__s), calc(var(--colour-primary__l) * var(--hover-multiplier)));
+	
+	--colour-error__h: 340;
+	--colour-error__s: 65%;
+	--colour-error__l: 52.5%;
+	--colour-error: hsl(var(--colour-error__h), var(--colour-error__s), var(--colour-error__l));
+	--colour-error--hover: hsl(var(--colour-error__h), var(--colour-error__s), calc(var(--colour-error__l) * var(--hover-multiplier)));
+	
+	/* → Text colours */
+    --colour-base--subtle-2: hsl(var(--colour-primary__h), 15%, 25%);
+    --colour-base--subtle-1: hsl(var(--colour-primary__h), 20%, 50%);
+    --colour-base--subtle-0: hsl(var(--colour-primary__h), 25%, 65%);
+    --colour-base: hsl(var(--colour-primary__h), 25%, 80%);
+    --colour-base--emphasised-0: hsl(var(--colour-primary__h), 50%, 85%);
+    --colour-base--emphasised-1: hsl(var(--colour-primary__h), 70%, 90%);
+    --colour-base--emphasised-2: hsl(var(--colour-primary__h), 85%, 95%);
+    
+	/* → Link colours */
+	/* ------------------------- //
+	// KEY: 
+	// red       → Shinigami Eyes - Transphobic
+	// orange    → Disambiguation
+	// yellow    → Wiktionary
+	// lime      → Shinigami Eyes - Trans-Friendly
+	// green     → MediaWiki wiki
+	// darkgreen → Meta wiki
+	// aqua      → External
+	// lightblue → Wikipedia (from other wikis)
+	// blue      → Default
+	// darkblue  → Stub
+	// purple    → Visited
+	// magenta   → Interwiki (other)
+	// pink      → 
+	// rose-red  → Broken
+	// brown     → 
+	// black     → 
+	// darkgrey  → 
+	// lightgrey → 
+	// white     → 
+	// ------------------------- */
+	
+    /* Default: blue */
+	--link-colour__h: var(--colour-primary__h);
+	--link-colour__s: var(--colour-primary__s);
+	--link-colour__l: var(--colour-primary__l);
+	--link-colour: hsl(var(--link-colour__h), var(--link-colour__s), var(--link-colour__l));
+	--link-colour--hover: hsl(var(--link-colour__h), var(--link-colour__s), calc(var(--link-colour__l) * var(--hover-multiplier)));
+	
+    /* Broken links: rose-red */
+	--link-broken-colour__h: var(--colour-error__h);
+	--link-broken-colour__s: var(--colour-error__s);
+	--link-broken-colour__l: var(--colour-error__l);
+	--link-broken-colour: hsl(var(--link-broken-colour__h), var(--link-broken-colour__s), var(--link-broken-colour__l));
+	--link-broken-colour--hover: hsl(var(--link-broken-colour__h), var(--link-broken-colour__s), calc(var(--link-broken-colour__l) * var(--hover-multiplier)));
+	
+    /* External links: aqua */
+	--link-external-colour__h: 175;
+	--link-external-colour__s: 50%;
+	--link-external-colour__l: 60%;
+	--link-external-colour: hsl(var(--link-external-colour__h), var(--link-external-colour__s), var(--link-external-colour__l));
+	--link-external-colour--hover: hsl(var(--link-external-colour__h), var(--link-external-colour__s), calc(var(--link-external-colour__l) * var(--hover-multiplier)));
+	
+    /* Visited links: purple */
+	--link-visited-colour__h: 270;
+	--link-visited-colour__s: 30%;
+	--link-visited-colour__l: 50%;
+	--link-visited-colour: hsl(var(--link-visited-colour__h), var(--link-visited-colour__s), var(--link-visited-colour__l));
+	--link-visited-colour--hover: hsl(var(--link-visited-colour__h), var(--link-visited-colour__s), calc(var(--link-visited-colour__l) * var(--hover-multiplier)));
+	
+    /* Disambiguation links: orange */
+	--link-disambiguation-colour__h: 27;
+	--link-disambiguation-colour__s: 80%;
+	--link-disambiguation-colour__l: 50%;
+	--link-disambiguation-colour: hsl(var(--link-disambiguation-colour__h), var(--link-disambiguation-colour__s), var(--link-disambiguation-colour__l));
+	--link-disambiguation-colour--hover: hsl(var(--link-disambiguation-colour__h), var(--link-disambiguation-colour__s), calc(var(--link-disambiguation-colour__l) * var(--hover-multiplier)));
+	
+    /* Redirect links: (default) */
+	--link-redirect-colour__h: var(--link-colour__h);
+	--link-redirect-colour__s: var(--link-colour__s);
+	--link-redirect-colour__l: var(--link-colour__l);
+	--link-redirect-colour: hsl(var(--link-redirect-colour__h), var(--link-redirect-colour__s), var(--link-redirect-colour__l));
+	--link-redirect-colour--hover: hsl(var(--link-redirect-colour__h), var(--link-redirect-colour__s), calc(var(--link-redirect-colour__l) * var(--hover-multiplier)));
+
+    /* Stub links: (default) */
+	--link-stub-colour__h: var(--link-colour__h);
+	--link-stub-colour__s: var(--link-colour__s);
+	--link-stub-colour__l: var(--link-colour__l);
+	--link-stub-colour: hsl(var(--link-stub-colour__h), var(--link-stub-colour__s), var(--link-stub-colour__l));
+	--link-stub-colour--hover: hsl(var(--link-stub-colour__h), var(--link-stub-colour__s), calc(var(--link-stub-colour__l) * var(--hover-multiplier)));
+
+    /* Interwiki links: magenta */
+	--link-interwiki-colour__h: 100;
+	--link-interwiki-colour__s: 80%;
+	--link-interwiki-colour__l: 55%;
+	--link-interwiki-colour: hsl(var(--link-interwiki-colour__h), var(--link-interwiki-colour__s), var(--link-interwiki-colour__l));
+	--link-interwiki-colour--hover: hsl(var(--link-interwiki-colour__h), var(--link-interwiki-colour__s), calc(var(--link-interwiki-colour__l) * var(--hover-multiplier)));
+
+    /* MediaWiki links: green */
+	--link-mediawiki-colour__h: 135;
+	--link-mediawiki-colour__s: 60%;
+	--link-mediawiki-colour__l: 45%;
+	--link-mediawiki-colour: hsl(var(--link-mediawiki-colour__h), var(--link-mediawiki-colour__s), var(--link-mediawiki-colour__l));
+	--link-mediawiki-colour--hover: hsl(var(--link-mediawiki-colour__h), var(--link-mediawiki-colour__s), calc(var(--link-mediawiki-colour__l) * var(--hover-multiplier)));
+
+    /* Meta Wiki links: darkgreen */
+	--link-metawiki-colour__h: 125;
+	--link-metawiki-colour__s: 60%;
+	--link-metawiki-colour__l: 30%;
+	--link-metawiki-colour: hsl(var(--link-metawiki-colour__h), var(--link-metawiki-colour__s), var(--link-metawiki-colour__l));
+	--link-metawiki-colour--hover: hsl(var(--link-metawiki-colour__h), var(--link-metawiki-colour__s), calc(var(--link-metawiki-colour__l) * var(--hover-multiplier)));
+	
+    /* Wikidata links: pink */
+	--link-wikidata-colour__h: 320;
+	--link-wikidata-colour__s: 70%;
+	--link-wikidata-colour__l: 60%;
+	--link-wikidata-colour: hsl(var(--link-wikidata-colour__h), var(--link-wikidata-colour__s), var(--link-wikidata-colour__l));
+	--link-wikidata-colour--hover: hsl(var(--link-wikidata-colour__h), var(--link-wikidata-colour__s), calc(var(--link-wikidata-colour__l) * var(--hover-multiplier)));
+	
+    /* Wikipedia links: lightblue */
+	--link-wikipedia-colour__h: 200;
+	--link-wikipedia-colour__s: 55%;
+	--link-wikipedia-colour__l: 55%;
+	--link-wikipedia-colour: hsl(var(--link-wikipedia-colour__h), var(--link-wikipedia-colour__s), var(--link-wikipedia-colour__l));
+	--link-wikipedia-colour--hover: hsl(var(--link-wikipedia-colour__h), var(--link-wikipedia-colour__s), calc(var(--link-wikipedia-colour__l) * var(--hover-multiplier)));
+	
+    /* Wiktionary links: yellow */
+	--link-wiktionary-colour__h: 48;
+	--link-wiktionary-colour__s: 80%;
+	--link-wiktionary-colour__l: 55%;
+	--link-wiktionary-colour: hsl(var(--link-wiktionary-colour__h), var(--link-wiktionary-colour__s), var(--link-wiktionary-colour__l));
+	--link-wiktionary-colour--hover: hsl(var(--link-wiktionary-colour__h), var(--link-wiktionary-colour__s), calc(var(--link-wiktionary-colour__l) * var(--hover-multiplier)));
+	
+	/* → Shinigami Eyes */
+	--ShinigamiEyesTFriendly__h: 120;
+	--ShinigamiEyesTFriendly__s: 60%;
+	--ShinigamiEyesTFriendly__l: 50%;
+	--ShinigamiEyesTFriendly: hsl(var(--ShinigamiEyesTFriendly__h), var(--ShinigamiEyesTFriendly__s), var(--ShinigamiEyesTFriendly__l)) !important;
+	--ShinigamiEyesTFriendly--hover: hsl(var(--ShinigamiEyesTFriendly__h), var(--ShinigamiEyesTFriendly__s), calc(var(--ShinigamiEyesTFriendly__l) * var(--hover-multiplier))) !important;
+	
+	--ShinigamiEyesTransphobic__h: 0;
+	--ShinigamiEyesTransphobic__s: 70%;
+	--ShinigamiEyesTransphobic__l: 37.5%;
+	--ShinigamiEyesTransphobic: hsl(var(--ShinigamiEyesTransphobic__h), var(--ShinigamiEyesTransphobic__s), var(--ShinigamiEyesTransphobic__l)) !important;
+	--ShinigamiEyesTransphobic--hover: hsl(var(--ShinigamiEyesTransphobic__h), var(--ShinigamiEyesTransphobic__s), calc(var(--ShinigamiEyesTransphobic__l) * var(--hover-multiplier))) !important;
+}
+
+
+/* → HTML (root)
+// --------------------- */
+html {
+    height: -webkit-max-content;
+    height:    -moz-max-content;
+    height:         max-content;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+
+html, body {
+	font-family: "Rubik";
+	background-color: var(--colour-surface-0) !important;
+    color: var(--colour-base) !important;
+}
+
+
+/* → Page size
+// --------------------- */
+@media (min-width: 1900px) {
+	#content > *,
+	#mw-content-text > .mw-parser-output {
+		width: 100%;
+		max-width: unset !important;
+	}
+	
+	.mw-page-container {
+		padding-left: 15rem;
+		padding-right: 15rem;
+	}
+}
+
+
+/* → Headings
+// --------------------- */
+h1 {
+	font-family: "Lulo" !important;
+ 	font-weight: 700;
+    color: var(--colour-base--emphasised-2) !important;
+}
+
+h2 {
+	font-family: "Lulo" !important;
+ 	font-weight: 700;
+    color: var(--colour-base--emphasised-1) !important;
+	margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+	border-bottom: 2px solid var(--colour-surface-2);
+}
+
+h3, h4, h5, h6 {
+    color: var(--colour-base--emphasised-0) !important;
+}
+
+
+/* → Code elements
+// --------------------- */
+pre, code, var, kbd, samp, tt,
+.mw-code, .mw-highlight {
+	font-family: "Robot Mono", monospace;
+    background-color: var(--colour-surface-2);
+    color: white;
+    border: 1.5px solid var(--border-colour-base);
+}
+
+
+/* → Links
+// --------------------- */
+a {
+    color: var(--link-colour);
+    text-decoration: none !important;
+}
+a:hover {
+    color: var(--link-colour--hover);
+}
+
+/* → Article links */
+.mw-parser-output a {
+    background-image:   -webkit-gradient(linear, left top, left bottom, from(currentColor), to(currentColor)) !important;
+    background-image: -o-linear-gradient(currentColor, currentColor) !important;
+    background-image:    linear-gradient(currentColor, currentColor) !important;
+    background-size: 0% 1.25px !important;
+    background-repeat: no-repeat !important;
+    background-position: bottom left !important;
+    -webkit-transition: background 450ms ease;
+         -o-transition: background 450ms ease;
+            transition: background 450ms ease;
+}
+.mw-parser-output a:hover {
+    background-size: 100% 1.25px !important;
+}
+
+/* → Broken links */
+a.new {
+    color: var(--link-broken-colour);
+}
+a.new:hover {
+    color: var(--link-broken-colour--hover);
+}
+
+.mw-parser-output a.new::after {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: currentColor;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 101 100'%3E%3Cg%3E%3Cpath d='M32.053,49.631c5.146-5.144,13.481-5.144,18.621,0c1.452,1.441,2.491,3.146,3.124,4.957c0,0,1.884,0.536,4.459-2.039 c1.042-1.05,3.015-2.962,3.015-2.962c-1.031-2.339-2.505-4.532-4.416-6.44c-8.288-8.288-21.723-8.288-30.011,0L6.216,63.769l0,0 c-8.288,8.288-8.288,21.727,0,30.019c8.288,8.284,21.723,8.284,30.011,0L55.273,74.74c0,0-2.75,0.652-5.454,0.607 c-3.059-0.045-5.462-0.783-5.462-0.783L31.526,87.396c-5.144,5.146-13.479,5.146-18.619,0c-5.144-5.143-5.144-13.476,0-18.615 L32.053,49.631z'/%3E%3Cpath d='M61.103,57.073c-5.146,5.147-13.48,5.147-18.627,0c-1.446-1.446-2.481-3.148-3.115-4.955c0,0-1.882-0.54-4.46,2.035 c-1.043,1.046-3.015,2.965-3.015,2.965c1.031,2.336,2.501,4.528,4.416,6.437c8.284,8.292,21.723,8.292,30.015,0L61.103,57.073z'/%3E%3Cpath d='M66.037,10.594c4.868,2.932,9.328,7.482,5.066,22.403l8.67,2.479c5.387-18.844-0.103-27.142-6.138-31.109 c-0.733-0.482-3.012-1.805-3.012-1.805C60.315-3.017,47.438,0.821,41.863,11.13L29.049,34.825c0,0,2.447-1.41,5.053-2.141 c2.942-0.825,5.454-0.806,5.454-0.806l8.637-15.965C51.648,9.518,59.639,7.134,66.037,10.594z'/%3E%3C/g%3E%3Cg%3E%3Cpath d='m 85.234151,49.58797 c -1.406535,0.37688 -2.209795,1.773183 -1.831999,3.183136 0.377796,1.409954 1.768172,2.218475 3.178125,1.840678 l 12.371317,-3.314883 c 1.406526,-0.376881 2.215716,-1.778438 1.838826,-3.184962 -0.37687,-1.406539 -1.775002,-2.216651 -3.184953,-1.838854 z'/%3E%3Cpath d='m 83.31536,64.164918 c -0.650214,0.174224 -1.219139,0.583422 -1.582398,1.212605 -0.731529,1.267043 -0.309965,2.826659 0.952743,3.555682 l 11.093499,6.399044 c 0.629178,0.363261 1.333322,0.431342 1.976695,0.25895 0.639964,-0.171478 1.214815,-0.58593 1.580568,-1.219452 0.729038,-1.26271 0.309301,-2.815478 -0.95767,-3.547028 l -11.093581,-6.39902 c -0.633524,-0.365763 -1.323053,-0.43409 -1.969846,-0.260783 z'/%3E%3Cpath d='m 71.647327,73.116019 c -1.409953,0.377793 -2.214806,1.781862 -1.838846,3.18497 l 3.314884,12.371309 c 0.377796,1.409954 1.775019,2.216641 3.184972,1.838844 1.409953,-0.377796 2.214804,-1.781863 1.838843,-3.18497 l -3.314882,-12.37131 c -0.377796,-1.409953 -1.775017,-2.21664 -3.184971,-1.838843 z'/%3E%3C/g%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 101 100'%3E%3Cg%3E%3Cpath d='M32.053,49.631c5.146-5.144,13.481-5.144,18.621,0c1.452,1.441,2.491,3.146,3.124,4.957c0,0,1.884,0.536,4.459-2.039 c1.042-1.05,3.015-2.962,3.015-2.962c-1.031-2.339-2.505-4.532-4.416-6.44c-8.288-8.288-21.723-8.288-30.011,0L6.216,63.769l0,0 c-8.288,8.288-8.288,21.727,0,30.019c8.288,8.284,21.723,8.284,30.011,0L55.273,74.74c0,0-2.75,0.652-5.454,0.607 c-3.059-0.045-5.462-0.783-5.462-0.783L31.526,87.396c-5.144,5.146-13.479,5.146-18.619,0c-5.144-5.143-5.144-13.476,0-18.615 L32.053,49.631z'/%3E%3Cpath d='M61.103,57.073c-5.146,5.147-13.48,5.147-18.627,0c-1.446-1.446-2.481-3.148-3.115-4.955c0,0-1.882-0.54-4.46,2.035 c-1.043,1.046-3.015,2.965-3.015,2.965c1.031,2.336,2.501,4.528,4.416,6.437c8.284,8.292,21.723,8.292,30.015,0L61.103,57.073z'/%3E%3Cpath d='M66.037,10.594c4.868,2.932,9.328,7.482,5.066,22.403l8.67,2.479c5.387-18.844-0.103-27.142-6.138-31.109 c-0.733-0.482-3.012-1.805-3.012-1.805C60.315-3.017,47.438,0.821,41.863,11.13L29.049,34.825c0,0,2.447-1.41,5.053-2.141 c2.942-0.825,5.454-0.806,5.454-0.806l8.637-15.965C51.648,9.518,59.639,7.134,66.037,10.594z'/%3E%3C/g%3E%3Cg%3E%3Cpath d='m 85.234151,49.58797 c -1.406535,0.37688 -2.209795,1.773183 -1.831999,3.183136 0.377796,1.409954 1.768172,2.218475 3.178125,1.840678 l 12.371317,-3.314883 c 1.406526,-0.376881 2.215716,-1.778438 1.838826,-3.184962 -0.37687,-1.406539 -1.775002,-2.216651 -3.184953,-1.838854 z'/%3E%3Cpath d='m 83.31536,64.164918 c -0.650214,0.174224 -1.219139,0.583422 -1.582398,1.212605 -0.731529,1.267043 -0.309965,2.826659 0.952743,3.555682 l 11.093499,6.399044 c 0.629178,0.363261 1.333322,0.431342 1.976695,0.25895 0.639964,-0.171478 1.214815,-0.58593 1.580568,-1.219452 0.729038,-1.26271 0.309301,-2.815478 -0.95767,-3.547028 l -11.093581,-6.39902 c -0.633524,-0.365763 -1.323053,-0.43409 -1.969846,-0.260783 z'/%3E%3Cpath d='m 71.647327,73.116019 c -1.409953,0.377793 -2.214806,1.781862 -1.838846,3.18497 l 3.314884,12.371309 c 0.377796,1.409954 1.775019,2.216641 3.184972,1.838844 1.409953,-0.377796 2.214804,-1.781863 1.838843,-3.18497 l -3.314882,-12.37131 c -0.377796,-1.409953 -1.775017,-2.21664 -3.184971,-1.838843 z'/%3E%3C/g%3E%3C/svg%3E");
+    -webkit-mask-position: center bottom;
+            mask-position: center bottom;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-size: 1em;
+            mask-size: 1em;
+    margin-left: 2px;
+    scale: 0.8;
+    position: relative;
+    top: 1.5px;
+}
+
+/* → External links */
+.mw-parser-output a.external {
+	padding: 0 !important;
+    background: none;
+	color: var(--link-external-colour) !important;
+}
+.mw-parser-output a.external:hover {
+	color: var(--link-external-colour--hover) !important;
+}
+.mw-parser-output a.external::after {
+	content: "";
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	background: currentColor;
+	-webkit-mask: url(/w/skins/Vector/resources/common/images/link-external-small-ltr-progressive.svg?30a3a);
+	        mask: url(/w/skins/Vector/resources/common/images/link-external-small-ltr-progressive.svg?30a3a);
+    -webkit-mask-position: center bottom;
+            mask-position: center bottom;
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-size: 1em;
+            mask-size: 1em;
+    margin-left: 2px;
+    scale: 0.85;
+    position: relative;
+    top: 1px;
+}
+
+/* → Visited links */
+a:visited {
+	color: var(--link-visited-colour);
+}
+a:visited:hover {
+	color: var(--link-visited-colour--hover);
+}
+
+/* → Disambiguation links */
+.mw-parser-output a.mw-disambig {
+	color: var(--link-disambiguation-colour);
+}
+.mw-parser-output a.mw-disambig:hover {
+	color: var(--link-disambiguation-colour--hover);
+}
+
+/* → Redirect links */
+.mw-parser-output a.mw-redirect {
+	color: var(--link-redirect-colour) !important;
+}
+.mw-parser-output a.mw-redirect:hover {
+	color: var(--link-redirect-colour--hover) !important;
+}
+
+/* → Stub links */
+.mw-parser-output a.stub {
+	color: var(--link-stub-colour) !important;
+}
+.mw-parser-output a.stub:hover {
+	color: var(--link-stub-colour--hover) !important;
+}
+
+/* → Interwiki links */
+.mw-parser-output a.extiw {
+	color: var(--link-interwiki-colour) !important;
+}
+.mw-parser-output a.extiw:hover {
+	color: var(--link-interwiki-colour--hover) !important;
+}
+.mw-parser-output a.extiw::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    /* background-color: hsl(220 50% 10% / 0.3); */
+    /* border-radius: var(--border-radius-1); */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 2.5px;
+    position: relative;
+    top: 2px;
+}
+
+/*   → MediaWiki links */
+.mw-parser-output a.extiw[title^="mw:"],
+.mw-parser-output a.extiw[title^="mediawikiwiki:"] {
+	color: var(--link-mediawiki-colour) !important;
+}
+.mw-parser-output a.extiw[title^="mw:"]:hover,
+.mw-parser-output a.extiw[title^="mediawikiwiki:"]:hover {
+	color: var(--link-mediawiki-colour--hover) !important;
+}
+.mw-parser-output a.extiw[title^="mw:"]::before,
+.mw-parser-output a.extiw[title^="mediawikiwiki:"]::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 25 25' fill='white'%3E%3Cpath opacity='.65' d='M7.068,4.359A3.866,3.866,0,0,0,8.2,7.024a2.989,2.989,0,0,0,1.973.787,0.919,0.919,0,0,0,.628-0.281,3,3,0,0,0,.7-2.876C10.97,2.815,9.5,1.8,7.7.915A8.026,8.026,0,0,0,7.068,4.359Z'/%3E%3Cpath opacity='.65' d='M4.4,7.031A3.848,3.848,0,0,0,6.468,9.056a2.984,2.984,0,0,0,2.122-.031,0.923,0.923,0,0,0,.473-0.5A3,3,0,0,0,8.617,5.6C7.42,4.1,5.678,3.728,3.676,3.607A8.025,8.025,0,0,0,4.4,7.031Z'/%3E%3Cpath opacity='.65' d='M2.959,10.524A3.831,3.831,0,0,0,5.638,11.6a2.99,2.99,0,0,0,1.949-.844,0.927,0.927,0,0,0,.246-0.645A3,3,0,0,0,6.306,7.58c-1.675-.919-3.428-0.6-5.324.06A8,8,0,0,0,2.959,10.524Z'/%3E%3Cpath opacity='.65' d='M2.956,14.307a3.824,3.824,0,0,0,2.885-.035,3,3,0,0,0,1.479-1.529A0.929,0.929,0,0,0,7.3,12.052,2.981,2.981,0,0,0,4.926,10.3c-1.9-.2-3.394.766-4.9,2.1A7.954,7.954,0,0,0,2.956,14.307Z'/%3E%3Cpath opacity='.65' d='M4.394,17.8a3.831,3.831,0,0,0,2.653-1.141,3.017,3.017,0,0,0,.784-1.981,0.926,0.926,0,0,0-.28-0.631,2.971,2.971,0,0,0-2.863-.706c-1.831.54-2.844,2.013-3.722,3.824A7.927,7.927,0,0,0,4.394,17.8Z'/%3E%3Cpath opacity='.65' d='M7.054,20.479A3.849,3.849,0,0,0,9.07,18.4a3.022,3.022,0,0,0-.031-2.132,0.922,0.922,0,0,0-.5-0.476,2.97,2.97,0,0,0-2.914.449c-1.486,1.2-1.86,2.953-1.982,4.964A7.929,7.929,0,0,0,7.054,20.479Z'/%3E%3Cpath opacity='.65' d='M10.531,21.93A3.867,3.867,0,0,0,11.6,19.238a3.016,3.016,0,0,0-.841-1.958,0.918,0.918,0,0,0-.642-0.248A2.979,2.979,0,0,0,7.6,18.567c-0.914,1.683-.594,3.443.06,5.348A7.957,7.957,0,0,0,10.531,21.93Z'/%3E%3Cpath opacity='.65' d='M14.3,21.933a3.873,3.873,0,0,0-.035-2.9,3,3,0,0,0-1.522-1.486,0.917,0.917,0,0,0-.687.018,2.993,2.993,0,0,0-1.745,2.387c-0.2,1.906.763,3.409,2.093,4.918A8,8,0,0,0,14.3,21.933Z'/%3E%3Cpath opacity='.65' d='M17.776,20.489a3.866,3.866,0,0,0-1.136-2.665,2.989,2.989,0,0,0-1.973-.788,0.919,0.919,0,0,0-.628.281,3,3,0,0,0-.7,2.876c0.538,1.839,2,2.857,3.807,3.739A8.025,8.025,0,0,0,17.776,20.489Z'/%3E%3Cpath opacity='.65' d='M20.441,17.817a3.848,3.848,0,0,0-2.065-2.025,2.984,2.984,0,0,0-2.122.031,0.923,0.923,0,0,0-.473.5,3,3,0,0,0,.447,2.927c1.2,1.493,2.94,1.869,4.942,1.991A8.025,8.025,0,0,0,20.441,17.817Z'/%3E%3Cpath opacity='.65' d='M21.885,14.324a3.831,3.831,0,0,0-2.679-1.077,2.99,2.99,0,0,0-1.949.844,0.927,0.927,0,0,0-.246.645,3,3,0,0,0,1.528,2.533c1.675,0.919,3.428.6,5.324-.06A7.994,7.994,0,0,0,21.885,14.324Z'/%3E%3Cpath opacity='.65' d='M21.888,10.541A3.824,3.824,0,0,0,19,10.576a3,3,0,0,0-1.479,1.529,0.928,0.928,0,0,0,.018.691,2.981,2.981,0,0,0,2.376,1.753c1.9,0.2,3.394-.767,4.9-2.1A7.955,7.955,0,0,0,21.888,10.541Z'/%3E%3Cpath opacity='.65' d='M20.451,7.046A3.831,3.831,0,0,0,17.8,8.187a3.017,3.017,0,0,0-.784,1.982,0.927,0.927,0,0,0,.28.631,2.971,2.971,0,0,0,2.863.706c1.831-.54,2.844-2.013,3.722-3.824A7.926,7.926,0,0,0,20.451,7.046Z'/%3E%3Cpath opacity='.65' d='M17.791,4.369a3.849,3.849,0,0,0-2.016,2.074,3.022,3.022,0,0,0,.031,2.132,0.922,0.922,0,0,0,.5.476A2.969,2.969,0,0,0,19.218,8.6C20.7,7.4,21.079,5.649,21.2,3.638A7.928,7.928,0,0,0,17.791,4.369Z'/%3E%3Cpath opacity='.65' d='M14.313,2.918A3.867,3.867,0,0,0,13.241,5.61a3.016,3.016,0,0,0,.84,1.958,0.918,0.918,0,0,0,.642.248A2.978,2.978,0,0,0,17.245,6.28c0.914-1.683.594-3.443-.06-5.348A7.958,7.958,0,0,0,14.313,2.918Z'/%3E%3Cpath opacity='.65' d='M10.548,2.915a3.874,3.874,0,0,0,.035,2.9A3,3,0,0,0,12.105,7.3a0.917,0.917,0,0,0,.687-0.018,2.993,2.993,0,0,0,1.745-2.387c0.2-1.906-.763-3.409-2.093-4.918A8,8,0,0,0,10.548,2.915Z'/%3E%3C/svg%3E");
+}
+
+/*   → Meta Wiki links */
+.mw-parser-output a.extiw[title^="m:"],
+.mw-parser-output a.extiw[title^="meta:"],
+.mw-parser-output a.extiw[title^="metawiki:"],
+.mw-parser-output a.extiw[title^="metawikimedia:"],
+.mw-parser-output a.extiw[title^="metawikipedia:"] {
+	color: var(--link-metawiki-colour) !important;
+}
+.mw-parser-output a.extiw[title^="m:"]:hover,
+.mw-parser-output a.extiw[title^="meta:"]:hover,
+.mw-parser-output a.extiw[title^="metawiki:"]:hover,
+.mw-parser-output a.extiw[title^="metawikimedia:"]:hover,
+.mw-parser-output a.extiw[title^="metawikipedia:"]:hover {
+	color: var(--link-metawiki-colour--hover) !important;
+}
+.mw-parser-output a.extiw[title^="m:"]::before,
+.mw-parser-output a.extiw[title^="meta:"]::before,
+.mw-parser-output a.extiw[title^="metawiki:"]::before,
+.mw-parser-output a.extiw[title^="metawikimedia:"]::before,
+.mw-parser-output a.extiw[title^="metawikipedia:"]::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.0' width='500' height='500'%3E%3Cpath fill='%23396' d='M 189.02218,124.20633 C 172.69178,132.29681 158.45146,143.04328 146.5673,155.66847 C 152.48762,155.78249 158.44225,155.51722 164.40102,154.84751 C 171.27983,143.7634 179.5207,133.45773 189.02218,124.20633 z M 203.09865,118.10031 C 215.78116,117.50212 228.38578,118.36609 240.66396,120.67652 C 244.90072,116.87945 248.85655,112.81889 252.54754,108.57279 C 236.02594,108.90998 219.33784,112.00274 203.09865,118.10031 z M 195.30933,131.86845 C 188.75688,138.31296 182.86378,145.29993 177.64553,152.71309 C 185.56284,151.02077 193.43615,148.58105 201.17907,145.40021 L 195.30933,131.86845 z M 204.49584,127.91763 L 210.3034,141.30605 C 217.43047,137.76184 224.11036,133.64091 230.3398,129.07217 C 221.83028,127.96488 213.18331,127.55909 204.49584,127.91763 z M 265.2405,108.85767 C 261.30615,113.93462 257.0281,118.78774 252.4154,123.34549 C 275.03568,129.36443 296.20164,140.2413 314.27436,155.30599 C 320.97945,147.19168 327.04254,138.61814 332.45059,129.67457 C 312.09925,117.58338 289.02987,110.39965 265.2405,108.85767 z M 138.23449,165.27819 C 123.4445,183.94447 113.32569,205.85153 108.64602,229.07174 C 119.01741,231.07621 129.5647,232.33792 140.2008,232.79044 C 141.25548,209.22554 147.55615,186.20961 158.39497,165.42362 C 151.64603,165.84353 144.90502,165.78424 138.23449,165.27819 z M 243.56684,131.37357 C 234.76217,138.75166 224.97369,145.1729 214.27045,150.45146 L 241.06981,212.23313 C 267.04988,199.91753 289.47402,182.96707 307.76251,162.83141 C 289.1782,147.3423 267.09353,136.57903 243.56684,131.37357 z M 170.31795,164.16901 C 158.22474,185.09544 151.22232,208.71027 150.12768,232.98077 C 177.45958,232.86733 205.20642,227.49869 231.93304,216.29863 L 205.15856,154.57429 C 193.73425,159.2839 182.04446,162.46453 170.31795,164.16901 z M 340.86162,135.08694 C 335.18006,144.46232 328.793,153.43941 321.75108,161.94115 C 336.89228,176.26891 349.43237,193.7952 358.22897,214.07438 C 360.04665,218.26476 361.67856,222.48749 363.11011,226.74057 C 373.22059,216.33531 382.50574,205.27385 390.91693,193.62749 C 379.2474,169.28369 361.765,149.46657 340.86162,135.08694 z M 106.99044,238.91887 C 103.64369,264.03131 106.61894,290.27984 116.85771,315.30076 C 131.11683,316.8666 145.54592,317.43131 160.03217,316.90859 C 157.55148,312.43139 155.2663,307.80629 153.18835,303.0159 C 144.67721,283.39481 140.44738,262.97653 140.07645,242.79089 C 128.92629,242.32659 117.8652,241.01281 106.99044,238.91887 z M 315.19813,169.45034 C 295.97565,190.65685 272.39052,208.49272 245.04929,221.40721 L 274.54723,289.41006 C 305.03416,275.31044 332.04211,256.69196 355.1351,234.66223 C 353.45684,229.07558 351.43286,223.53589 349.05489,218.05386 C 340.86389,199.17081 329.2315,182.83438 315.19813,169.45034 z M 149.99089,242.95255 C 150.40291,261.74874 154.40179,280.76294 162.33376,299.04885 C 164.94267,305.06328 167.90482,310.81276 171.17834,316.29752 C 202.82296,313.96005 234.60616,306.51094 265.41047,293.47555 L 235.91252,225.4727 C 207.85924,237.24566 178.705,242.871 149.99089,242.95255 z M 395.48091,204.14901 C 386.62683,215.93663 376.90655,227.14084 366.33803,237.63725 C 373.24424,264.33449 372.86354,291.70844 366.21189,317.3662 C 379.21475,307.95806 391.49951,297.80691 402.99648,286.96709 C 408.22641,260.025 406.10703,231.40302 395.48091,204.14901 z M 121.61857,325.805 C 134.68569,351.9078 154.52826,372.66105 178.04515,386.86168 C 193.5249,385.62177 209.01562,383.3987 224.45759,380.15009 C 201.16358,367.74577 180.84679,349.59637 165.88521,326.6325 C 151.04839,327.42981 136.25513,327.13485 121.61857,325.805 z M 357.99412,245.65081 C 334.9786,266.84267 308.37138,284.8423 278.53916,298.6128 L 302.7021,354.31665 C 320.4841,346.19378 337.33602,336.8819 353.17832,326.42617 C 353.18315,326.41217 353.18972,326.39906 353.19455,326.38507 C 361.99428,300.8602 363.97806,272.97809 357.99412,245.65081 z M 177.35053,325.81486 C 193.36707,348.52178 215.1267,365.82034 239.7393,376.58697 C 257.85453,371.96525 275.82768,365.89093 293.55289,358.35348 L 269.38995,302.64963 C 239.30284,315.39106 208.28817,322.98465 177.35053,325.81486 z M 398.47352,304.49599 C 386.7902,314.65669 374.41959,324.17707 361.36037,332.95976 C 353.06628,355.36308 339.78643,375.95219 322.2929,392.96236 C 359.8382,374.39993 386.42134,341.89057 398.47352,304.49599 z M 193.97837,395.2447 C 229.03839,411.0607 270.03064,413.42189 308.41711,398.98133 C 284.47041,400.12127 260.8019,395.93363 239.08751,387.02058 C 224.10499,390.7056 209.04384,393.42887 193.97837,395.2447 z M 346.61322,342.38835 C 333.8803,350.12408 320.5669,357.1901 306.69402,363.5194 L 316.09556,385.19315 C 328.80636,372.68441 339.07662,358.16113 346.61322,342.38835 z M 255.74809,382.55277 C 272.14023,387.62235 289.44731,389.92552 306.93392,389.20131 L 297.53238,367.52755 C 283.73583,373.39724 269.79744,378.41311 255.74809,382.55277 z'/%3E%3Cpath fill='%23900' d='M 255.71875,33.5625 C 178.93962,33.5625 111.10867,72.086118 70.5,130.84375 L 114,155.96875 C 145.8111,112.11504 197.43839,83.5625 255.71875,83.5625 C 313.99911,83.562502 365.6264,112.11504 397.4375,155.96875 L 440.9375,130.84375 C 400.32883,72.086118 332.49788,33.5625 255.71875,33.5625 z'/%3E%3Cpath fill='%23069' d='M 46.8125,174.9375 C 36.442946,200.79582 30.71875,229.01254 30.71875,258.5625 C 30.71875,374.31432 118.2675,469.74106 230.71875,482.1875 L 230.71875,431.75 C 145.95412,419.60155 80.71875,346.67019 80.71875,258.5625 C 80.718751,238.11672 84.234053,218.49436 90.6875,200.25 L 46.8125,174.9375 z'/%3E%3Cpath fill='%23069' d='M 464.625,174.9375 L 420.75,200.25 C 427.20345,218.49436 430.71875,238.11672 430.71875,258.5625 C 430.71875,346.67018 365.48339,419.60155 280.71875,431.75 L 280.71875,482.1875 C 393.16999,469.74106 480.71874,374.31432 480.71875,258.5625 C 480.71875,229.01254 474.99455,200.79582 464.625,174.9375 z'/%3E%3C/svg%3E");
+}
+
+/*   → Wikidata links */
+.mw-parser-output a.extiw[title^="d:"],
+.mw-parser-output a.extiw[title^="wikidata:"] {
+	color: var(--link-wikidata-colour) !important;
+}
+.mw-parser-output a.extiw[title^="d:"]:hover,
+.mw-parser-output a.extiw[title^="wikidata:"]:hover {
+	color: var(--link-wikidata-colour--hover) !important;
+}
+.mw-parser-output a.extiw[title^="d:"]::before,
+.mw-parser-output a.extiw[title^="wikidata:"]::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.2' width='1050' height='590'%3E%3Cpath fill='%23900' d='m 120,545 h 30 V 45 H 120 V 545 z m 60,0 h 90 V 45 H 180 V 545 z M 300,45 V 545 h 90 V 45 h -90 z'/%3E%3Cpath fill='%23396' d='m 840,545 h 30 V 45 H 840 V 545 z M 900,45 V 545 h 30 V 45 H 900 z M 420,545 h 30 V 45 H 420 V 545 z M 480,45 V 545 h 30 V 45 h -30 z'/%3E%3Cpath fill='%23069' d='m 540,545 h 90 V 45 h -90 V 545 z m 120,0 h 30 V 45 H 660 V 545 z M 720,45 V 545 h 90 V 45 H 720 z'/%3E%3C/svg%3E");
+}
+
+/*   → Wikipedia links */
+.mw-parser-output a.extiw[title^="w:"],
+.mw-parser-output a.extiw[title^="wiki:"],
+.mw-parser-output a.extiw[title^="wikipedia:"] {
+	color: var(--link-wikipedia-colour) !important;
+}
+.mw-parser-output a.extiw[title^="w:"]:hover,
+.mw-parser-output a.extiw[title^="wiki:"]:hover,
+.mw-parser-output a.extiw[title^="wikipedia:"]:hover {
+	color: var(--link-wikipedia-colour--hover) !important;
+}
+.mw-parser-output a.extiw[title^="w:"]::before,
+.mw-parser-output a.extiw[title^="wiki:"]::before,
+.mw-parser-output a.extiw[title^="wikipedia:"]::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2560' height='1920' fill='white' version='1.0'%3E%3Cpath d='M 1572.1849,1627.0102 L 1306.1823,1000.5074 C 1200.7894,1207.291 1084.0203,1422.1816 984.08831,1626.6832 C 983.53491,1627.7421 935.794,1627.1196 935.77253,1626.4919 C 783.04844,1270.1035 624.71738,916.06238 471.26086,559.94868 C 435.66961,472.89603 311.0572,332.8557 225.80114,333.65195 C 225.76971,323.53653 225.29834,300.99862 225.16,287.33013 L 750.89976,287.08145 L 750.54242,332.79388 C 688.79634,335.67165 582.11762,375.05651 609.73219,443.22102 C 683.86449,603.19953 946.23106,1223.0478 1017.1409,1380.4024 C 1066.641,1283.5588 1204.8145,1025.3915 1261.6829,916.2347 C 1217.0904,824.72656 1069.6975,483.01874 1025.5083,396.94216 C 992.18197,340.84736 908.55536,333.9725 844.13274,333.01061 C 844.1545,318.59759 844.93547,307.56947 844.59744,287.87508 L 1306.8137,289.29857 L 1306.8137,331.26914 C 1244.2196,333.00671 1184.9916,356.28709 1211.7969,416.09209 C 1273.9744,545.15815 1310.2452,637.01602 1367.4138,756.373 C 1385.6741,721.42114 1479.0241,529.76675 1523.579,428.57055 C 1550.5151,361.35388 1510.3073,336.12224 1397.6899,333.09483 C 1399.1803,322.03539 1398.1983,299.82396 1399.1438,289.23999 C 1542.8636,288.6988 1759.8754,288.19612 1798.3033,287.61641 L 1798.5147,331.29405 C 1725.1519,334.14041 1649.2691,373.23281 1609.6216,433.88446 L 1417.409,832.52052 C 1438.5181,885.30935 1623.2926,1295.8072 1642.7704,1341.3349 L 2040.1763,424.18373 C 2011.9121,349.90516 1921.7067,333.32268 1886.441,332.48569 C 1886.694,320.67644 1886.714,302.6313 1886.8135,287.60007 L 2301.6607,290.75568 L 2302.2236,292.85218 L 2301.5147,332.29405 C 2210.5034,335.03668 2154.2035,383.69856 2120.5658,463.48139 C 2037.8986,650.21948 1785.1772,1241.6764 1616.5009,1627.1414 C 1616.28,1627.3528 1572.2823,1627.0763 1572.1849,1627.0102 z'/%3E%3C/svg%3E");
+}
+
+/*   → Wiktionary links */
+.mw-parser-output a.extiw[title^="wikt:"],
+.mw-parser-output a.extiw[title^="wiktionary:"] {
+	color: var(--link-wiktionary-colour) !important;
+}
+.mw-parser-output a.extiw[title^="wikt:"]:hover,
+.mw-parser-output a.extiw[title^="wiktionary:"]:hover {
+	color: var(--link-wiktionary-colour--hover) !important;
+}
+.mw-parser-output a.extiw[title^="wikt:"]::before,
+.mw-parser-output a.extiw[title^="wiktionary:"]::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.0' width='350' height='350' id='svg2047'%3E%3Cdefs id='defs'%3E%3ClinearGradient id='tile-grad'%3E%3Cstop stop-color='%23f4e3ca' offset='0'/%3E%3Cstop stop-color='%23e9cc9d' offset='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='back-grad'%3E%3Cstop stop-color='%23e7c78d' offset='0'/%3E%3Cstop stop-color='%23e7c78d' offset='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='blue-grad'%3E%3Cstop stop-color='%23000066' offset='0'/%3E%3Cstop stop-color='%2300004f' offset='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='matrix(1.0365493, 0, 0, 1.0365493, -17.701257, -6.5981711)'%3E%3Cg id='tile'%3E%3Crect id='tile-back' fill='url(%23back-grad)' stroke='black' stroke-width='3.30574679' y='75.558617' x='13.211552' ry='37.487125' rx='27.963432' height='273.33887' width='274.39041' transform='matrix(0.9870852, -0.1601962, 0.1691987, 0.985582, 0, 0)'/%3E%3Crect id='tile-front' fill='url(%23tile-grad)' stroke='black' stroke-width='3.30574346' y='56.547047' x='19.577763' ry='37.487095' rx='27.963409' height='273.33868' width='274.39020' transform='matrix(0.9870852, -0.1601962, 0.1691987, 0.985582, 0, 0)'/%3E%3C/g%3E%3Cpath id='char' fill='url(%23blue-grad)' stroke='black' stroke-width='2.48703504' d='M 294.39268,64.778124 L 295.12213,69.709024 C 290.64497,70.35919 287.13778,71.730873 284.59999,73.823675 C 282.06191,75.916535 279.86775,79.456948 278.01721,84.44475 C 276.78755,87.800097 275.22424,95.604687 273.32704,107.85973 L 246.97917,260.47598 L 241.91104,261.21212 L 185.66651,151.35589 L 163.85961,272.54757 L 159.29819,273.21 L 86.03758,130.56763 C 80.580544,119.92549 77.193958,113.65624 75.878049,111.75957 C 73.689239,108.62903 71.016215,106.45376 67.858799,105.23311 C 64.701384,104.01279 60.630484,103.7645 55.646863,104.4882 L 54.917433,99.557371 L 118.52403,90.319663 L 119.25341,95.250593 L 116.21275,95.692213 C 111.73556,96.342449 108.47224,97.905702 106.42241,100.38123 C 104.37268,102.85721 103.57114,105.60518 104.01827,108.62585 C 104.47796,111.73545 107.39439,118.61777 112.76726,129.27219 L 161.60029,225.77498 L 177.35404,135.41088 L 170.03849,120.95464 L 164.18994,109.41621 C 161.75886,105.23152 159.19541,101.61087 156.49973,98.553545 C 155.15197,97.02509 153.59005,95.799783 151.81433,94.877924 C 149.46611,93.5855 147.18333,92.737347 144.96645,92.332831 C 143.28275,92.03317 140.70904,92.13456 137.24579,92.637599 L 136.51633,87.70667 L 203.41747,77.990531 L 204.1469,82.921399 L 199.58553,83.583868 C 194.85507,84.270889 191.54952,85.840248 189.66875,88.291291 C 187.78771,90.742731 187.11678,93.789598 187.65584,97.431848 C 188.32576,101.96308 191.39616,109.59417 196.86671,120.32546 L 244.33955,213.75864 L 262.30361,109.46067 C 264.39046,97.904178 265.1183,89.993821 264.48773,85.72888 C 264.18521,83.685779 263.29019,81.864574 261.80272,80.265533 C 260.3151,78.666557 258.58927,77.646611 256.62601,77.205665 C 253.23195,76.428036 248.95852,76.41341 243.80613,77.16167 L 243.0767,72.230801 L 294.39268,64.778124 z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+
+
+/* → Nav popups (article previews)
+// --------------------- */
+.mwe-popups {
+	background: var(--colour-surface-2);
+	border-radius: var(--border-radius-8);
+}
+.mwe-popups:hover {
+	background: var(--colour-surface-3);
+}
+
+.mwe-popups .mwe-popups-container {
+	-webkit-clip-path: none !important;
+	        clip-path: none !important;
+	background: none !important;
+}
+.mwe-popups .mwe-popups-container::after {
+	background: var(--colour-surface-2);
+}
+
+/* → Image */
+.mwe-popups .mwe-popups-container .mwe-popups-discreet {
+	padding: var(--space-4);
+	margin: 0 !important;
+}
+.mwe-popups.mwe-popups-is-not-tall .mwe-popups-container .mwe-popups-discreet {
+	padding-bottom: 0;
+}
+
+.mwe-popups .mwe-popups-container .mwe-popups-discreet .mwe-popups-thumbnail {
+    -o-object-fit: contain;
+       object-fit: contain;
+    outline: none;
+    border-radius: var(--border-radius-8);
+}
+.mwe-popups.mwe-popups-is-not-tall .mwe-popups-container .mwe-popups-discreet .mwe-popups-thumbnail {
+	width: 100%;
+    height: auto;
+    min-height: 150px;
+}
+.mwe-popups.mwe-popups-is-tall .mwe-popups-container .mwe-popups-discreet .mwe-popups-thumbnail {
+    height: 100%;
+}
+
+/* → Text */
+.mwe-popups .mwe-popups-container .mwe-popups-extract {
+	color: var(--colour-base) !important;
+}
+.mwe-popups.mwe-popups-is-tall .mwe-popups-container .mwe-popups-extract {
+	margin-bottom: 50px !important;
+}
+.mwe-popups.mwe-popups-is-not-tall .mwe-popups-container .mwe-popups-extract {
+	margin-bottom: 32px !important;
+}
+
+.mwe-popups .mwe-popups-container .mwe-popups-extract[dir="ltr"]::after {
+	background-image:   -webkit-gradient(linear, left top, right top, from(transparent), color-stop(75%, var(--colour-surface-2)));
+	background-image: -o-linear-gradient(left, transparent, var(--colour-surface-2) 75%);
+	background-image:    linear-gradient(to right, transparent, var(--colour-surface-2) 75%);
+	width: 50%;
+}
+.mwe-popups:hover .mwe-popups-container .mwe-popups-extract[dir="ltr"]::after {
+	background-image:   -webkit-gradient(linear, left top, right top, from(transparent), color-stop(75%, var(--colour-surface-3)));
+	background-image: -o-linear-gradient(left, transparent, var(--colour-surface-3) 75%);
+	background-image:    linear-gradient(to right, transparent, var(--colour-surface-3) 75%);
+}
+
+/* → Footer (settings icon) */
+.mwe-popups footer {
+	padding: var(--space-3) !important;
+}
+.mwe-popups.mwe-popups-is-tall footer {
+	inset: unset !important;
+	bottom: 0 !important;
+}
+
+.mwe-popups footer .mwe-popups-settings-button {
+	margin: 0 !important;
+}
+.mwe-popups footer .mwe-popups-settings-button:hover {
+	background-color: var(--colour-surface-4) !important;
+}
+
+.mwe-popups footer .mwe-popups-settings-button .popups-icon {
+	-webkit-filter: invert(1) opacity(0.7) hue-rotate(calc(var(--colour-primary__h) * 1deg)) saturate(100);
+	        filter: invert(1) opacity(0.7) hue-rotate(calc(var(--colour-primary__h) * 1deg)) saturate(100);
+}
+.mwe-popups footer .mwe-popups-settings-button:hover .popups-icon {
+	-webkit-filter: invert(1) opacity(1) hue-rotate(calc(var(--colour-primary__h) * 1deg)) saturate(100);
+	        filter: invert(1) opacity(1) hue-rotate(calc(var(--colour-primary__h) * 1deg)) saturate(100);
+}
+
+
+/* → Shinigami Eyes
+// --------------------- */
+a.has-assigned-label {
+    outline: none !important;
+    text-decoration: none !important;
+    padding: 0.05rem 0.15rem;
+	border-radius: 4px;
+	margin: -1px;
+}
+
+.mw-parser-output a.assigned-label-transphobic {
+	background-color: hsl(var(--ShinigamiEyesTransphobic__h) 60% 40% / 0.1);
+}
+.mw-parser-output a.assigned-label-transphobic:hover {
+	background-color: hsl(var(--ShinigamiEyesTransphobic__h) 60% 40% / 0.25);
+	color: var(--ShinigamiEyesTransphobic--hover) !important;
+}
+
+.mw-parser-output a.assigned-label-t-friendly {
+	background-color: hsl(var(--ShinigamiEyesTFriendly__h) 60% 40% / 0.1);
+}
+.mw-parser-output a.assigned-label-t-friendly:hover {
+	background-color: hsl(var(--ShinigamiEyesTFriendly__h) 60% 40% / 0.25);
+	color: var(--ShinigamiEyesTFriendly--hover) !important;
+}
+
+
+/* → Infoboxes
+// --------------------- */
+.mw-parser-output .infobox {
+	margin-left: var(--space-s) !important;
+}
